@@ -66,6 +66,8 @@
 
       <!-- Label and input for dish_id -->
       <input type="hidden" name="dish_id" value="<%= @dish.id %>">
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for venue_id -->
       <div class="form-group">
@@ -76,8 +78,7 @@
         <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+      
 
       <!-- Label and input for notes -->
       <div class="form-group">
