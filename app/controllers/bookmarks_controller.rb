@@ -34,8 +34,9 @@ class BookmarksController < ApplicationController
     @bookmark.dish_id = params.fetch("dish_id")
     @bookmark.venue_id = params.fetch("venue_id")
     @bookmark.user_id = params.fetch("user_id")
-    @bookmark.notes = params.fetch("notes")
-
+    #@bookmark.notes = params.fetch("notes")
+    @bookmark.notes=""
+    
     save_status = @bookmark.save
 
     if save_status == true
