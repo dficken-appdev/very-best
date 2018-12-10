@@ -90,3 +90,6 @@ class VenuesController < ApplicationController
     end
   end
 end
+
+
+
