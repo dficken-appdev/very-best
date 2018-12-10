@@ -18,21 +18,21 @@
   
     <div class="form-group">
       <%= f.label :cuisine_name_cont, "Cuisine" %>
-    <% @cuisines.each do |cuisine| %>
+      <% @cuisines.each do |cuisine| %>
       <div class="form-check">
 
       <td>
         <label class="form-check-label" for="cuisine_id">
-        <input class="form-check-input" type="checkbox" value="" id="cuisine_id">
+        <input class="form-check-input" type="checkbox" value="<%=cuisine.id%>" id="cuisine_id">
                   <%= cuisine.name %>
         </label>
       </td>
       </div>
+ 
     <% end %> 
     </div>
       
       
-   
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/dishes" class="btn btn-secondary btn-block mb-1">Clear filters</a>

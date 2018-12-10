@@ -3,8 +3,8 @@ class DishesController < ApplicationController
     @q = Dish.ransack(params.fetch("q", nil))
     @dishes = @q.result(:distinct => true).includes(:cuisine, :bookmarks, :fans, :specialists).page(params.fetch("page", nil)).per(10)
     
-    @q = Cuisine.ransack(params.fetch("q", nil))
-    @cuisines = @q.result(:distinct => true).includes(:dishes).page(params.fetch("page", nil)).per(10)
+    @f = Cuisine.ransack(params.fetch("f", nil))
+    @cuisines = @f.result(:distinct => true).includes(:dishes).sort_by{ |f| f.name }
 
     
     render("dishes_templates/index.html.erb")
