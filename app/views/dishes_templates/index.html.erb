@@ -16,25 +16,30 @@
   </div>
 
   
-    <div class="form-group">
-      <%= f.label :cuisine_name_cont, "Cuisine" %>
-      <% @cuisines.each do |cuisine| %>
-      <div class="form-check">
-
-      <td>
-        <label class="form-check-label" for="cuisine_id">
-        <input class="form-check-input" type="checkbox" value="<%=cuisine.id%>" id="cuisine_id">
-                  <%= cuisine.name %>
-        </label>
-      </td>
-      </div>
- 
-    <% end %> 
+  <div class="form-group">
+    <%= f.label :cuisine_name_cont, "Cuisine" %>
+    <br>
+    <%= hidden_field_tag "cuisine_id][]", nil %>
+        <div class="form-check">
+            <% Cuisine.all.each do |cuisine| %>
+                <div class="form-check">
+                  <td>
+              
+                  <label>
+                <%= check_box_tag('q[cuisine_id_eq_any][]', cuisine.id, (true if @q.cuisine_id_eq_any.try(:include?, cuisine.id))) %>
+                <%= cuisine.name %>
+            </label>
+            </td>
+            </div>
+          <% end %>
+            </div>
+        <div class="form-check">
+        </div>
     </div>
-      
+
       
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
+      
       <a href="/dishes" class="btn btn-secondary btn-block mb-1">Clear filters</a>
     <% end %>
     <a class="btn btn-secondary btn-block mb-1" data-toggle="collapse" href="#dishes_filters">

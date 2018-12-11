@@ -1,13 +1,10 @@
 class DishesController < ApplicationController
   def index
     @q = Dish.ransack(params.fetch("q", nil))
+    @q.sorts = 'name asc' if @q.sorts.empty?
     @dishes = @q.result(:distinct => true).includes(:cuisine, :bookmarks, :fans, :specialists).page(params.fetch("page", nil)).per(10)
     
-    @f = Cuisine.ransack(params.fetch("f", nil))
-    @cuisines = @f.result(:distinct => true).includes(:dishes).sort_by{ |f| f.name }
-
-    
-    render("dishes_templates/index.html.erb")
+     render("dishes_templates/index.html.erb")
   end
 
   def show
