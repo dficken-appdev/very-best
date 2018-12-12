@@ -3,3 +3,6 @@ class AddAddressFormattedAddressToVenue < ActiveRecord::Migration[5.0]
     add_column :venues, :address_formatted_address, :string
   end
 end
+
+
+
