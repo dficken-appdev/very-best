@@ -1,93 +1,123 @@
-<div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Edit <%= resource_name.to_s.humanize %></h2>
-      </div>
+<head>
+  <meta charset="utf-8">
+  <title>VeryBest</title>
 
-      <div class="card-body">
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal", role: "form" }) do |f| %>
-          <%= devise_error_messages! %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-          <div class="form-group">
-            <%= f.label :email, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.email_field :email, autofocus: true, class: "form-control" %>
-            </div>
-          </div>
+  <style>
+    /* Only necessary if you are using navbar-fixed-top */
+    body {
+      padding-top: 60px;
+    }
+  </style>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <link rel="stylesheet" media="all" href="/assets/application-9644eb475d3bf8c642abc71074642eae4f027cea65d4aec4553ae97d4dde88ee.css" />
+  <script src="/assets/application-1ab3ed18f9c2f6e270f40d47082f8c4d62328d6a543735e9bbce394ed953fed8.js"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Xw/fXAfV786CqhbULJQphQlcybkNuNbWut96Uxk2gbYeIU17KbVEF8rSoQW+gxTaJtCEoVNIMGssBjt1C9T5tg==" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<div class="container mt-4">
+
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Edit <%= resource_name.to_s.humanize %></h2>
+        </div>
+
+        <div class="card-body">
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal", role: "form" }) do |f| %>
+            <%= devise_error_messages! %>
+
             <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-2">
+              <%= f.label :email, class: "col-sm-9 control-label" %>
+              <div class="col-sm-9">
+                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                  <p class="help-block">
+                    Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :password, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
                 <p class="help-block">
-                  Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+                  Leave blank if you don't want to change it.
                 </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :current_password, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+                <p class="help-block">
+                  We need your current password to confirm your changes.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :username, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= f.text_field :username, :class => "form-control", :placeholder => "Enter username" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <%= f.submit "Update", class: "btn btn-success btn-block" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <%= link_to "Back", :back, class: "btn btn-link btn-block" %>
               </div>
             </div>
           <% end %>
 
-          <div class="form-group">
-            <%= f.label :password, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-              <p class="help-block">
-                Leave blank if you don't want to change it.
-              </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-3">
+              Unhappy?
             </div>
-          </div>
 
-          <div class="form-group">
-            <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            <div class="col-sm-9">
+              <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
             </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :current_password, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-              <p class="help-block">
-                We need your current password to confirm your changes.
-              </p>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :username, class: "col-sm-2 control-label" %>
-            <div class="col-sm-10">
-              <%= f.text_field :username, :class => "form-control", :placeholder => "Enter username" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-              <%= f.submit "Update", class: "btn btn-success btn-block" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-              <%= link_to "Back", :back, class: "btn btn-link btn-block" %>
-            </div>
-          </div>
-        <% end %>
-
-      </div>
-
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-sm-2">
-            Unhappy?
-          </div>
-
-          <div class="col-sm-10">
-            <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
