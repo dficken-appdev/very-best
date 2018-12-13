@@ -21,7 +21,7 @@
     <br>
     <%= hidden_field_tag "cuisine_id][]", nil %>
         <div class="form-check">
-            <% Cuisine.all.each do |cuisine| %>
+            <% Cuisine.order("name asc").each do |cuisine| %>
                 <div class="form-check">
                   <td>
               
